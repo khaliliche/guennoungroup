@@ -20,7 +20,41 @@
     "title": "Produits et matériel de lavage auto, en gros et à la pièce",
     "subtitle": "Composez votre liste, envoyez votre demande et recevez votre devis directement sur WhatsApp.",
     "ctaCatalogue": "Voir le catalogue",
-    "ctaQuote": "Demander un devis"
+    "ctaQuote": "Demander un devis",
+    "modesTitle": "En gros ou à la pièce, comme vous voulez",
+    "wholesaleTitle": "Achat en gros",
+    "wholesaleText": "Des quantités adaptées aux professionnels : stations de lavage, garages, détaillants et revendeurs.",
+    "pieceTitle": "À la pièce",
+    "pieceText": "Besoin de quelques articles seulement ? Commandez simplement à la pièce.",
+    "featuredTitle": "Produits en vedette",
+    "viewAll": "Voir tout le catalogue",
+    "ctaBannerTitle": "Prêt à demander votre devis ?",
+    "ctaBannerText": "Choisissez vos produits et envoyez votre demande : vous recevez votre devis sur WhatsApp."
+  },
+  "catalogue": {
+    "title": "Catalogue",
+    "subtitle": "Parcourez nos produits et ajoutez-les à votre demande de devis.",
+    "search": "Rechercher un produit…",
+    "empty": "Les produits arrivent bientôt. Revenez nous voir !",
+    "noResults": "Aucun produit ne correspond à votre recherche.",
+    "count": "{count} produit(s)"
+  },
+  "product": {
+    "back": "Retour au catalogue",
+    "availability": {
+      "in_stock": "En stock",
+      "out_of_stock": "Rupture de stock",
+      "on_request": "Sur demande"
+    },
+    "color": "Couleur",
+    "scent": "Parfum",
+    "quantity": "Quantité",
+    "add": "Ajouter au devis",
+    "added": "Ajouté à votre devis",
+    "viewQuote": "Voir mon devis",
+    "unavailable": "Ce produit n'est pas disponible actuellement.",
+    "modes": "Disponible en gros et à la pièce",
+    "priceNote": "Les prix ne sont pas affichés : ajoutez ce produit à votre devis et nous vous répondrons avec une offre."
   },
   "footer": {
     "tagline": "Produits et matériel de lavage auto, en gros et à la pièce.",

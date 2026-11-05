@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Menu, X, ClipboardList } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { useCart } from "@/lib/cart";
 
 const links = [
   { href: "/", key: "home" },
@@ -21,6 +22,7 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const { count } = useCart();
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -69,7 +71,7 @@ export default function Header() {
             className="flex items-center gap-1.5 rounded-full bg-lime-400 px-4 py-2 text-sm font-bold text-slate-900 transition-colors hover:bg-lime-300"
           >
             <ClipboardList size={16} />
-            <span className="hidden sm:inline">{t("quote")}</span>
+            <span className="hidden sm:inline">{t("quote")}</span>{count > 0 && <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-600 px-1 text-[11px] font-bold text-white">{count}</span>}
           </Link>
 
           <button

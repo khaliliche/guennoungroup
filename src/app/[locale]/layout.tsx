@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { CartProvider } from "@/lib/cart";
 import "../globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -54,11 +55,11 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${jakarta.variable} ${cairo.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-white text-slate-800 antialiased">
-        <NextIntlClientProvider>
+        <NextIntlClientProvider><CartProvider>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-        </NextIntlClientProvider>
+        </CartProvider></NextIntlClientProvider>
       </body>
     </html>
   );

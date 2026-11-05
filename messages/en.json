@@ -20,7 +20,41 @@
     "title": "Car washing products and equipment, wholesale and piece by piece",
     "subtitle": "Build your list, send your request and receive your quotation directly on WhatsApp.",
     "ctaCatalogue": "View catalogue",
-    "ctaQuote": "Request a quote"
+    "ctaQuote": "Request a quote",
+    "modesTitle": "Wholesale or piece by piece, your choice",
+    "wholesaleTitle": "Wholesale",
+    "wholesaleText": "Quantities made for professionals: car wash stations, garages, retailers and resellers.",
+    "pieceTitle": "Piece by piece",
+    "pieceText": "Need just a few items? Simply order by the piece.",
+    "featuredTitle": "Featured products",
+    "viewAll": "View the full catalogue",
+    "ctaBannerTitle": "Ready to request your quote?",
+    "ctaBannerText": "Choose your products and send your request: you receive your quotation on WhatsApp."
+  },
+  "catalogue": {
+    "title": "Catalogue",
+    "subtitle": "Browse our products and add them to your quote request.",
+    "search": "Search for a product…",
+    "empty": "Products are coming soon. Check back shortly!",
+    "noResults": "No product matches your search.",
+    "count": "{count} product(s)"
+  },
+  "product": {
+    "back": "Back to catalogue",
+    "availability": {
+      "in_stock": "In stock",
+      "out_of_stock": "Out of stock",
+      "on_request": "On request"
+    },
+    "color": "Color",
+    "scent": "Scent",
+    "quantity": "Quantity",
+    "add": "Add to quote",
+    "added": "Added to your quote",
+    "viewQuote": "View my quote",
+    "unavailable": "This product is currently unavailable.",
+    "modes": "Available wholesale and piece by piece",
+    "priceNote": "Prices are not displayed: add this product to your quote and we will reply with an offer."
   },
   "footer": {
     "tagline": "Car washing products and equipment, wholesale and piece by piece.",
