@@ -11,6 +11,7 @@ import {
   slugify,
 } from "@/lib/admin";
 import type { Product } from "@/lib/types";
+import { PALETTE, type PaletteColor } from "@/lib/colors";
 
 const input =
   "w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100";
@@ -150,18 +151,51 @@ export default function ProductForm({ product }: { product?: Product }) {
     setImage("");
   }
 
-  function addVariant() {
+  function addScent() {
     setVariants((prev) => [
       ...prev,
       {
         key: crypto.randomUUID(),
-        type: "color",
+        type: "scent",
         name_fr: "",
         name_en: "",
         name_ar: "",
         color_hex: "#06b6d4",
       },
     ]);
+  }
+
+  const colorVariants = variants.filter((v) => v.type === "color");
+  const scentVariants = variants.filter((v) => v.type === "scent");
+  const sameHex = (a: string, b: string) => a.toLowerCase() === b.toLowerCase();
+  const isOn = (hex: string) =>
+    colorVariants.some((v) => sameHex(v.color_hex, hex));
+  const extraColors = colorVariants.filter(
+    (v) => !PALETTE.some((c) => sameHex(c.hex, v.color_hex))
+  );
+
+  function toggleColor(c: PaletteColor) {
+    setVariants((prev) => {
+      const has = prev.some(
+        (v) => v.type === "color" && sameHex(v.color_hex, c.hex)
+      );
+      if (has) {
+        return prev.filter(
+          (v) => !(v.type === "color" && sameHex(v.color_hex, c.hex))
+        );
+      }
+      return [
+        ...prev,
+        {
+          key: crypto.randomUUID(),
+          type: "color",
+          name_fr: c.fr,
+          name_en: c.en,
+          name_ar: c.ar,
+          color_hex: c.hex,
+        },
+      ];
+    });
   }
 
   function updateVariant(key: string, patch: Partial<VariantDraft>) {
@@ -371,27 +405,73 @@ export default function ProductForm({ product }: { product?: Product }) {
       </Card>
 
       <Card
-        title="Variantes"
-        hint="Couleurs ou parfums que le client choisit sur la page du produit."
+        title="Couleurs"
+        hint="Cliquez sur les couleurs disponibles pour ce produit. Le client les choisira avec de petits cercles."
+      >
+        <div className="flex flex-wrap gap-3">
+          {PALETTE.map((c) => {
+            const on = isOn(c.hex);
+            return (
+              <button
+                key={c.hex}
+                type="button"
+                title={c.fr}
+                aria-label={c.fr}
+                aria-pressed={on}
+                onClick={() => toggleColor(c)}
+                style={{ backgroundColor: c.hex }}
+                className={`flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 transition ${
+                  on
+                    ? "ring-2 ring-brand-600 ring-offset-2"
+                    : "opacity-50 hover:scale-110 hover:opacity-100"
+                }`}
+              >
+                {on && (
+                  <span
+                    className={`text-sm font-black ${
+                      c.light ? "text-slate-900" : "text-white"
+                    }`}
+                  >
+                    ✓
+                  </span>
+                )}
+              </button>
+            );
+          })}
+          {extraColors.map((v) => (
+            <button
+              key={v.key}
+              type="button"
+              title={`${v.name_fr} (personnalisée) - cliquer pour retirer`}
+              onClick={() =>
+                setVariants((prev) => prev.filter((x) => x.key !== v.key))
+              }
+              style={{ backgroundColor: v.color_hex }}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 ring-2 ring-brand-600 ring-offset-2"
+            >
+              <span className="text-sm font-black text-white mix-blend-difference">
+                ✓
+              </span>
+            </button>
+          ))}
+        </div>
+        {colorVariants.length > 0 && (
+          <p className="mt-3 text-xs font-semibold text-slate-500">
+            {colorVariants.map((v) => v.name_fr).join(" · ")}
+          </p>
+        )}
+      </Card>
+
+      <Card
+        title="Parfums"
+        hint="Optionnel : parfums que le client choisit sur la page du produit."
       >
         <div className="space-y-3">
-          {variants.map((v) => (
+          {scentVariants.map((v) => (
             <div
               key={v.key}
-              className="grid gap-2 rounded-xl border border-slate-200 p-3 sm:grid-cols-[110px_1fr_1fr_1fr_auto]"
+              className="grid gap-2 rounded-xl border border-slate-200 p-3 sm:grid-cols-[1fr_1fr_1fr_auto]"
             >
-              <select
-                className={input}
-                value={v.type}
-                onChange={(e) =>
-                  updateVariant(v.key, {
-                    type: e.target.value as "color" | "scent",
-                  })
-                }
-              >
-                <option value="color">Couleur</option>
-                <option value="scent">Parfum</option>
-              </select>
               <input
                 className={input}
                 placeholder="Nom FR"
@@ -417,36 +497,24 @@ export default function ProductForm({ product }: { product?: Product }) {
                   updateVariant(v.key, { name_ar: e.target.value })
                 }
               />
-              <div className="flex items-center gap-2">
-                {v.type === "color" && (
-                  <input
-                    type="color"
-                    value={v.color_hex}
-                    onChange={(e) =>
-                      updateVariant(v.key, { color_hex: e.target.value })
-                    }
-                    className="h-10 w-10 cursor-pointer rounded-lg border border-slate-200 bg-white p-1"
-                  />
-                )}
-                <button
-                  type="button"
-                  onClick={() =>
-                    setVariants((prev) => prev.filter((x) => x.key !== v.key))
-                  }
-                  className="rounded-lg px-2 py-2 text-sm font-bold text-red-600 hover:bg-red-50"
-                >
-                  ✕
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  setVariants((prev) => prev.filter((x) => x.key !== v.key))
+                }
+                className="rounded-lg px-2 py-2 text-sm font-bold text-red-600 hover:bg-red-50"
+              >
+                ✕
+              </button>
             </div>
           ))}
         </div>
         <button
           type="button"
-          onClick={addVariant}
+          onClick={addScent}
           className="mt-3 rounded-full border border-brand-200 px-4 py-2 text-sm font-bold text-brand-700 hover:bg-brand-50"
         >
-          + Ajouter une variante
+          + Ajouter un parfum
         </button>
       </Card>
 

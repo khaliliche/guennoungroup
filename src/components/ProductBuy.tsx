@@ -89,7 +89,7 @@ export default function ProductBuy({ product }: { product: Product }) {
                 title={loc(v, "name", locale)}
                 onClick={() => pick(v.id)}
                 style={{ backgroundColor: v.color_hex ?? "#06b6d4" }}
-                className={`h-10 w-10 rounded-full border border-slate-200 transition ${
+                className={`h-9 w-9 rounded-full border border-slate-300 shadow-sm transition ${
                   variantId === v.id
                     ? "ring-2 ring-brand-600 ring-offset-2"
                     : "hover:scale-110"
