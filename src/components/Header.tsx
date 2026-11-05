@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Menu, X, ClipboardList } from "lucide-react";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
@@ -30,8 +31,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-100 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
-        <Link href="/" className="text-xl font-extrabold text-brand-700">
-          Guennoun<span className="text-lime-500">Group</span>
+        <Link href="/" aria-label="GuennounGroup" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="GuennounGroup"
+            width={557}
+            height={321}
+            priority
+            className="h-12 w-auto"
+          />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">

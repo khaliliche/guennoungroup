@@ -1,8 +1,27 @@
+import Image from "next/image";
 import { ArrowRight, Boxes, Package } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import ProductCard from "@/components/ProductCard";
 import { getProducts } from "@/lib/products";
+
+function HeroPhoto({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative aspect-[4/5] w-40 overflow-hidden rounded-2xl border-4 border-white shadow-xl shadow-brand-900/15 2xl:w-52 ${className}`}
+    >
+      <Image src={src} alt={alt} fill sizes="208px" className="object-cover" />
+    </div>
+  );
+}
 
 export const revalidate = 60;
 
@@ -24,7 +43,25 @@ export default async function HomePage({
       <section className="relative overflow-hidden bg-linear-to-b from-brand-50 to-white">
         <div className="pointer-events-none absolute -end-16 -top-24 h-72 w-72 rounded-full bg-brand-200/50 blur-3xl" />
         <div className="pointer-events-none absolute -start-20 top-40 h-64 w-64 rounded-full bg-lime-200/50 blur-3xl" />
+        {/* Product photos on the sides (shown from 1280px up) */}
+        <div className="pointer-events-none absolute start-[3%] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-5 xl:flex 2xl:start-[6%]">
+          <HeroPhoto src="/hero/hero-1.webp" alt="Sile Chemicals Carpet" className="-rotate-3" />
+          <HeroPhoto src="/hero/hero-2.webp" alt="Ricci Ecoreflex" className="ms-10 rotate-2" />
+        </div>
+        <div className="pointer-events-none absolute end-[3%] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-5 xl:flex 2xl:end-[6%]">
+          <HeroPhoto src="/hero/hero-3.webp" alt="Ricci Car Care wet and dry extractor" className="rotate-3" />
+          <HeroPhoto src="/hero/hero-4.webp" alt="Ricci Car Care foam tank" className="me-10 -rotate-2" />
+        </div>
         <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:py-28">
+          {/* Logo above the title */}
+          <Image
+            src="/logo.png"
+            alt="GuennounGroup"
+            width={557}
+            height={321}
+            priority
+            className="mx-auto mb-8 w-40 sm:w-48"
+          />
           <h1 className="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-brand-900 sm:text-5xl">
             {t("title")}
           </h1>
