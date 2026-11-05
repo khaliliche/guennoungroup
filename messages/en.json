@@ -59,5 +59,57 @@
   "footer": {
     "tagline": "Car washing products and equipment, wholesale and piece by piece.",
     "rights": "All rights reserved."
+  },
+  "cart": {
+    "title": "Your quote request",
+    "subtitle": "Review your products, fill in your details and send your quote request on WhatsApp.",
+    "empty": "Your list is empty.",
+    "emptyCta": "View catalogue",
+    "remove": "Remove",
+    "clear": "Clear list",
+    "yourInfo": "Your details",
+    "fullName": "Full name",
+    "city": "City",
+    "type": "Order type",
+    "note": "Note (optional)",
+    "notePlaceholder": "Details, preferred timing…",
+    "send": "Send request on WhatsApp",
+    "errName": "Please enter your full name.",
+    "errCity": "Please enter your city.",
+    "sent": "Your request is ready in WhatsApp. Send the message to submit it.",
+    "wa": {
+      "title": "New Quote Request",
+      "customer": "Customer:",
+      "type": "Type:",
+      "products": "Products:",
+      "city": "City:",
+      "note": "Note:",
+      "closing": "Please provide a quotation."
+    }
+  },
+  "about": {
+    "title": "About",
+    "intro": "GuennounGroup supplies car washing products and equipment, wholesale and piece by piece.",
+    "v1Title": "Selected products",
+    "v1Text": "A range of washing products and equipment chosen for their efficiency and reliability.",
+    "v2Title": "Wholesale and retail",
+    "v2Text": "Order the quantity you need, from a single piece to large volumes.",
+    "v3Title": "Fast quotation",
+    "v3Text": "Send your request in a few clicks and receive your quotation directly on WhatsApp.",
+    "ctaTitle": "Need a quote?",
+    "ctaText": "Browse the catalogue and build your list.",
+    "ctaButton": "View catalogue"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "A question or a special request? Get in touch.",
+    "whatsapp": "WhatsApp",
+    "whatsappText": "Write to us directly.",
+    "whatsappCta": "Open WhatsApp",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "quoteTitle": "Already know what you need?",
+    "quoteCta": "Prepare my quote request"
   }
 }

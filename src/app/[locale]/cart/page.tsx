@@ -1,17 +1,12 @@
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import CartView from "@/components/CartView";
 
-export default async function Page({
+export default async function CartPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("nav");
-
-  return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-3xl font-bold text-brand-900">{t("quote")}</h1>
-    </section>
-  );
+  return <CartView />;
 }

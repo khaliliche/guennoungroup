@@ -8,7 +8,7 @@
     "catalogue": "Catalogue",
     "about": "À propos",
     "contact": "Contact",
-    "quote": "Devis",
+    "quote": "Panier",
     "menu": "Menu"
   },
   "common": {
@@ -33,7 +33,7 @@
   },
   "catalogue": {
     "title": "Catalogue",
-    "subtitle": "Parcourez nos produits et ajoutez-les à votre demande de devis.",
+    "subtitle": "Parcourez nos produits et ajoutez-les à votre panier.",
     "search": "Rechercher un produit…",
     "empty": "Les produits arrivent bientôt. Revenez nous voir !",
     "noResults": "Aucun produit ne correspond à votre recherche.",
@@ -49,15 +49,67 @@
     "color": "Couleur",
     "scent": "Parfum",
     "quantity": "Quantité",
-    "add": "Ajouter au devis",
-    "added": "Ajouté à votre devis",
-    "viewQuote": "Voir mon devis",
+    "add": "Ajouter au panier",
+    "added": "Ajouté à votre panier",
+    "viewQuote": "Voir mon panier",
     "unavailable": "Ce produit n'est pas disponible actuellement.",
     "modes": "Disponible en gros et à la pièce",
-    "priceNote": "Les prix ne sont pas affichés : ajoutez ce produit à votre devis et nous vous répondrons avec une offre."
+    "priceNote": "Les prix ne sont pas affichés : ajoutez ce produit à votre panier et nous vous répondrons avec une offre."
   },
   "footer": {
     "tagline": "Produits et matériel de lavage auto, en gros et à la pièce.",
     "rights": "Tous droits réservés."
+  },
+  "cart": {
+    "title": "Votre panier",
+    "subtitle": "Vérifiez vos produits, renseignez vos informations et envoyez votre demande de devis sur WhatsApp.",
+    "empty": "Votre panier est vide.",
+    "emptyCta": "Voir le catalogue",
+    "remove": "Retirer",
+    "clear": "Vider le panier",
+    "yourInfo": "Vos informations",
+    "fullName": "Nom complet",
+    "city": "Ville",
+    "type": "Type de commande",
+    "note": "Note (optionnel)",
+    "notePlaceholder": "Précisions, délais souhaités…",
+    "send": "Envoyer la demande sur WhatsApp",
+    "errName": "Veuillez entrer votre nom complet.",
+    "errCity": "Veuillez entrer votre ville.",
+    "sent": "Votre demande est prête dans WhatsApp. Envoyez le message pour la transmettre.",
+    "wa": {
+      "title": "Nouvelle demande de devis",
+      "customer": "Client :",
+      "type": "Type :",
+      "products": "Produits :",
+      "city": "Ville :",
+      "note": "Note :",
+      "closing": "Merci de nous fournir un devis."
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "intro": "GuennounGroup fournit des produits et du matériel de lavage automobile, en gros comme à la pièce.",
+    "v1Title": "Produits sélectionnés",
+    "v1Text": "Une gamme de produits et de matériel de lavage choisis pour leur efficacité et leur fiabilité.",
+    "v2Title": "Gros et détail",
+    "v2Text": "Commandez la quantité dont vous avez besoin, d'une seule pièce jusqu'aux grandes quantités.",
+    "v3Title": "Devis rapide",
+    "v3Text": "Envoyez votre demande en quelques clics et recevez votre devis directement sur WhatsApp.",
+    "ctaTitle": "Besoin d'un devis ?",
+    "ctaText": "Parcourez le catalogue et composez votre liste.",
+    "ctaButton": "Voir le catalogue"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Une question ou un besoin particulier ? Contactez-nous.",
+    "whatsapp": "WhatsApp",
+    "whatsappText": "Écrivez-nous directement.",
+    "whatsappCta": "Ouvrir WhatsApp",
+    "phone": "Téléphone",
+    "email": "Email",
+    "address": "Adresse",
+    "quoteTitle": "Vous connaissez déjà vos besoins ?",
+    "quoteCta": "Préparer ma demande de devis"
   }
 }
