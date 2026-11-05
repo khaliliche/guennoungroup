@@ -21,3 +21,16 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
     .maybeSingle();
   return (data as Product | null) ?? null;
 }
+export async function getOtherProducts(
+  excludeId: string,
+  limit = 4
+): Promise<Product[]> {
+  const { data } = await supabasePublic()
+    .from("products")
+    .select("*, variants(*)")
+    .eq("is_visible", true)
+    .neq("id", excludeId)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  return (data ?? []) as Product[];
+}

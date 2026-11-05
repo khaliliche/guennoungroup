@@ -6,10 +6,14 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import AvailabilityBadge from "@/components/AvailabilityBadge";
 import ProductBuy from "@/components/ProductBuy";
-import { getProductBySlug } from "@/lib/products";
+import ProductCard from "@/components/ProductCard";
+import { getOtherProducts, getProductBySlug } from "@/lib/products";
 import { loc } from "@/lib/types";
 
 export const revalidate = 60;
+
+// How many other products to show under a product
+const MORE_PRODUCTS_LIMIT = 4;
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -36,6 +40,7 @@ export default async function ProductPage({ params }: Props) {
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
+  const more = await getOtherProducts(product.id, MORE_PRODUCTS_LIMIT);
   const t = await getTranslations("product");
   const c = await getTranslations("common");
   const title = loc(product, "title", locale);
@@ -43,6 +48,7 @@ export default async function ProductPage({ params }: Props) {
   const image = product.images?.[0];
 
   return (
+    <>
     <section className="mx-auto max-w-6xl px-4 py-10">
       <Link
         href="/catalogue"
@@ -103,5 +109,26 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
     </section>
+
+    {more.length > 0 && (
+      <section className="border-t border-brand-100 bg-brand-50/40">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="mb-8 text-2xl font-extrabold text-brand-900 sm:text-3xl">
+            {t("more")}
+          </h2>
+          <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:snap-none md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4">
+            {more.map((p) => (
+              <div
+                key={p.id}
+                className="w-[62%] shrink-0 snap-start md:w-auto [&>a]:h-full"
+              >
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+    </>
   );
 }

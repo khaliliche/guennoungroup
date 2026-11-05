@@ -54,7 +54,8 @@
     "viewQuote": "Voir mon panier",
     "unavailable": "Ce produit n'est pas disponible actuellement.",
     "modes": "Disponible en gros et à la pièce",
-    "priceNote": "Les prix ne sont pas affichés : ajoutez ce produit à votre panier et nous vous répondrons avec une offre."
+    "priceNote": "Les prix ne sont pas affichés : ajoutez ce produit à votre panier et nous vous répondrons avec une offre.",
+    "more": "Plus de produits"
   },
   "footer": {
     "tagline": "Produits et matériel de lavage auto, en gros et à la pièce.",
