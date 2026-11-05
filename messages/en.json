@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "GuennounGroup — Car washing products and equipment",
+    "description": "Car washing products and equipment, wholesale and piece by piece. Request your quote in a few clicks."
+  },
+  "nav": {
+    "home": "Home",
+    "catalogue": "Catalogue",
+    "about": "About",
+    "contact": "Contact",
+    "quote": "Quote",
+    "menu": "Menu"
+  },
+  "common": {
+    "wholesale": "Wholesale",
+    "pieceByPiece": "Piece by piece",
+    "requestQuote": "Request a quote"
+  },
+  "home": {
+    "title": "Car washing products and equipment, wholesale and piece by piece",
+    "subtitle": "Build your list, send your request and receive your quotation directly on WhatsApp.",
+    "ctaCatalogue": "View catalogue",
+    "ctaQuote": "Request a quote"
+  },
+  "footer": {
+    "tagline": "Car washing products and equipment, wholesale and piece by piece.",
+    "rights": "All rights reserved."
+  }
+}

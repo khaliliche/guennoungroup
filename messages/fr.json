@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "title": "GuennounGroup — Produits et matériel de lavage auto",
+    "description": "Produits et matériel de lavage automobile en gros et à la pièce. Demandez votre devis en quelques clics."
+  },
+  "nav": {
+    "home": "Accueil",
+    "catalogue": "Catalogue",
+    "about": "À propos",
+    "contact": "Contact",
+    "quote": "Devis",
+    "menu": "Menu"
+  },
+  "common": {
+    "wholesale": "Gros",
+    "pieceByPiece": "À la pièce",
+    "requestQuote": "Demander un devis"
+  },
+  "home": {
+    "title": "Produits et matériel de lavage auto, en gros et à la pièce",
+    "subtitle": "Composez votre liste, envoyez votre demande et recevez votre devis directement sur WhatsApp.",
+    "ctaCatalogue": "Voir le catalogue",
+    "ctaQuote": "Demander un devis"
+  },
+  "footer": {
+    "tagline": "Produits et matériel de lavage auto, en gros et à la pièce.",
+    "rights": "Tous droits réservés."
+  }
+}
