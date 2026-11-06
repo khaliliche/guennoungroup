@@ -27,12 +27,21 @@ function HeroPhoto({
 }) {
   return (
     <div
-      className={`relative aspect-[4/5] w-40 overflow-hidden rounded-2xl border-4 border-white shadow-xl shadow-brand-900/15 2xl:w-52 ${className}`}
+      className={`relative aspect-[4/5] w-32 overflow-hidden rounded-2xl shadow-lg shadow-brand-900/10 2xl:w-40 ${className}`}
     >
-      <Image src={src} alt={alt} fill sizes="208px" className="object-cover" />
+      <Image src={src} alt={alt} fill sizes="160px" className="object-cover" />
     </div>
   );
 }
+
+const HERO_TILES = [
+  { src: "/hero/hero-1.webp", alt: "Sile Chemicals Carpet" },
+  { src: "/hero/hero-3.webp", alt: "Ricci Car Care wet and dry extractor" },
+  { src: "/hero/hero-6.webp", alt: "Foam cleaning gun" },
+  { src: "/hero/hero-2.webp", alt: "Ricci Ecoreflex" },
+  { src: "/hero/hero-4.webp", alt: "Ricci Car Care foam tank" },
+  { src: "/hero/hero-7.webp", alt: "Pressure washer brass valve" },
+];
 
 function InfoCard({
   icon,
@@ -84,16 +93,35 @@ export default async function HomePage({
       <section className="relative overflow-hidden bg-linear-to-b from-brand-50 to-white">
         <div className="pointer-events-none absolute -end-16 -top-24 h-72 w-72 rounded-full bg-brand-200/50 blur-3xl" />
         <div className="pointer-events-none absolute -start-20 top-40 h-64 w-64 rounded-full bg-lime-200/50 blur-3xl" />
+        {/* Phone / tablet: photos peek in at the top and bottom edges of the hero */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 xl:hidden">
+          <div className="absolute inset-x-0 top-0 grid h-24 grid-cols-3 gap-2.5 px-3 [mask-image:linear-gradient(to_bottom,black_0%,black_25%,transparent_100%)] sm:h-32 sm:px-8">
+            {HERO_TILES.slice(0, 3).map((p) => (
+              <div key={p.src} className="relative -mt-3 overflow-hidden rounded-2xl">
+                <Image src={p.src} alt="" fill sizes="(min-width: 640px) 30vw, 33vw" className="object-cover" />
+              </div>
+            ))}
+          </div>
+          <div className="absolute inset-x-0 bottom-0 grid h-44 grid-cols-3 gap-2.5 px-3 pb-3 [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] sm:h-56 sm:px-8">
+            {HERO_TILES.slice(3).map((p) => (
+              <div key={p.src} className="relative overflow-hidden rounded-2xl shadow-md shadow-brand-900/10">
+                <Image src={p.src} alt="" fill sizes="(min-width: 640px) 30vw, 33vw" className="object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
         {/* Product photos on the sides (shown from 1280px up) */}
-        <div className="pointer-events-none absolute start-[3%] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-5 xl:flex 2xl:start-[6%]">
+        <div className="pointer-events-none absolute start-[3%] top-1/2 hidden -translate-y-1/2 flex-col items-start gap-4 xl:flex 2xl:start-[6%]">
           <HeroPhoto src="/hero/hero-1.webp" alt="Sile Chemicals Carpet" className="-rotate-3" />
           <HeroPhoto src="/hero/hero-2.webp" alt="Ricci Ecoreflex" className="ms-10 rotate-2" />
+          <HeroPhoto src="/hero/hero-6.webp" alt="Foam cleaning gun (Tornador)" className="-rotate-2" />
         </div>
-        <div className="pointer-events-none absolute end-[3%] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-5 xl:flex 2xl:end-[6%]">
+        <div className="pointer-events-none absolute end-[3%] top-1/2 hidden -translate-y-1/2 flex-col items-end gap-4 xl:flex 2xl:end-[6%]">
           <HeroPhoto src="/hero/hero-3.webp" alt="Ricci Car Care wet and dry extractor" className="rotate-3" />
           <HeroPhoto src="/hero/hero-4.webp" alt="Ricci Car Care foam tank" className="me-10 -rotate-2" />
+          <HeroPhoto src="/hero/hero-7.webp" alt="Pressure washer brass valve" className="rotate-2" />
         </div>
-        <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:py-28">
+        <div className="relative mx-auto max-w-6xl px-4 pb-52 pt-24 text-center sm:pb-64 sm:pt-32 xl:py-28">
           {/* Logo above the title */}
           <Image
             src="/logo.png"
@@ -112,14 +140,15 @@ export default async function HomePage({
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               href="/catalogue"
-              className="rounded-full bg-brand-600 px-7 py-3 font-semibold text-white transition-colors hover:bg-brand-700"
+              className="rounded-full bg-brand-600 px-7 py-3 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700"
             >
               {t("ctaCatalogue")}
             </Link>
             <Link
               href="/cart"
-              className="rounded-full bg-lime-400 px-7 py-3 font-semibold text-slate-900 transition-colors hover:bg-lime-300"
+              className="inline-flex items-center gap-2 rounded-full bg-lime-400 px-7 py-3 font-semibold text-slate-900 shadow-lg shadow-lime-400/40 transition hover:-translate-y-0.5 hover:bg-lime-300"
             >
+              <WhatsAppIcon size={18} />
               {t("ctaQuote")}
             </Link>
           </div>
