@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { googleVerification, siteJsonLd, siteUrl } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Cairo } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -38,11 +40,15 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
+    metadataBase: new URL(siteUrl),
     title: { default: t("title"), template: "%s | GuennounGroup" },
     description: t("description"),
+    applicationName: "GuennounGroup",
+    verification: googleVerification
+      ? { google: googleVerification }
+      : undefined,
   };
 }
-
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
@@ -55,6 +61,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${jakarta.variable} ${cairo.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-white text-slate-800 antialiased">
+        <JsonLd data={siteJsonLd(locale)} />
         <NextIntlClientProvider><CartProvider>
           <Header />
           <main className="flex-1">{children}</main>

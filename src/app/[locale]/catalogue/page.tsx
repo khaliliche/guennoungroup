@@ -1,9 +1,18 @@
+import { pageMeta } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import CatalogueGrid from "@/components/CatalogueGrid";
 import { getProducts } from "@/lib/products";
 
 export const revalidate = 60;
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return pageMeta(locale, "/catalogue", { ns: "catalogue", desc: "subtitle" });
+}
 export default async function CataloguePage({
   params,
 }: {

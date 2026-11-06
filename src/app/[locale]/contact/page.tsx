@@ -1,3 +1,4 @@
+import { pageMeta } from "@/lib/seo";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -26,6 +27,14 @@ function InfoCard({
   );
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return pageMeta(locale, "/contact", { ns: "contact", desc: "subtitle" });
+}
 export default async function ContactPage({
   params,
 }: {

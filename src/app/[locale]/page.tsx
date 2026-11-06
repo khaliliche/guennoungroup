@@ -1,3 +1,4 @@
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -67,6 +68,14 @@ function InfoCard({
 
 export const revalidate = 60;
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return pageMeta(locale, "");
+}
 export default async function HomePage({
   params,
 }: {

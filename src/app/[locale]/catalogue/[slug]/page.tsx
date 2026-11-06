@@ -1,3 +1,5 @@
+import JsonLd from "@/components/JsonLd";
+import { DEFAULT_OG_IMAGE, SITE_NAME, languageAlternates, pageUrl, productJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -23,17 +25,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return {};
   const title = loc(product, "title", locale);
   const description = loc(product, "description", locale).slice(0, 160);
+  const path = `/catalogue/${product.slug}`;
+  const url = pageUrl(locale, path);
+  const image = product.images?.[0] || DEFAULT_OG_IMAGE;
   return {
     title,
     description,
+    alternates: { canonical: url, languages: languageAlternates(path) },
     openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
       title,
       description,
-      images: product.images?.[0] ? [product.images[0]] : [],
+      url,
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   };
 }
-
 export default async function ProductPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
@@ -49,6 +63,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <>
+    <JsonLd data={productJsonLd(product, locale)} />
     <section className="mx-auto max-w-6xl px-4 py-10">
       <Link
         href="/catalogue"

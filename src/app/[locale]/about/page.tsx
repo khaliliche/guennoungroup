@@ -1,7 +1,16 @@
+import { pageMeta } from "@/lib/seo";
 import { Boxes, ShieldCheck, Zap } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return pageMeta(locale, "/about", { ns: "about", desc: "intro" });
+}
 export default async function AboutPage({
   params,
 }: {
