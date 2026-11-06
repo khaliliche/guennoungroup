@@ -112,5 +112,10 @@
     "address": "Address",
     "quoteTitle": "Already know what you need?",
     "quoteCta": "Prepare my quote request"
+  },
+  "bubble": {
+    "open": "Open my cart",
+    "close": "Close",
+    "viewCart": "View full cart"
   }
 }

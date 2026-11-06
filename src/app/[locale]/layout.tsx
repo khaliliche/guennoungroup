@@ -1,3 +1,4 @@
+import CartBubble from "@/components/CartBubble";
 import JsonLd from "@/components/JsonLd";
 import { googleVerification, siteJsonLd, siteUrl } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -66,6 +67,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <CartBubble />
         </CartProvider></NextIntlClientProvider>
       </body>
     </html>

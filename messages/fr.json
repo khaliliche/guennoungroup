@@ -112,5 +112,10 @@
     "address": "Adresse",
     "quoteTitle": "Vous connaissez déjà vos besoins ?",
     "quoteCta": "Préparer ma demande de devis"
+  },
+  "bubble": {
+    "open": "Ouvrir mon panier",
+    "close": "Fermer",
+    "viewCart": "Voir le panier complet"
   }
 }
